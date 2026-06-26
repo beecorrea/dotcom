@@ -1,0 +1,55 @@
+---
+title: "Hello, World"
+subtitle: "The first post on @bianca — notes on software engineering, infrastructure and technical leadership."
+publishedAt: "2026-06-26"
+---
+
+There's something wonderful about writing a first post. It's a blank canvas,
+an open road, a new repository with zero commits. Everything is possible and
+nothing has gone wrong yet.
+
+## Why another blog?
+
+I've been writing software for a long time now. Over the years I've
+accumulated thoughts, patterns, war stories, and the occasional strong opinion
+about how we build things. Most of those ideas lived in Slack threads,
+pull request descriptions, and design docs that disappeared into the void.
+
+This blog is an attempt to give those ideas a more permanent home.
+
+## What to expect
+
+I plan to write about:
+
+- **Systems design** — the architecture decisions that matter and the ones
+  that don't (yet)
+- **Engineering culture** — what makes teams productive, and what quietly
+  kills momentum
+- **Technical leadership** — the craft of leading without losing touch
+  with the code
+- **The craft itself** — code patterns, performance, reliability, and
+  the joy of getting things right
+
+## A code example
+
+Because no engineering blog is complete without one:
+
+```typescript
+interface BlogPost {
+  title: string
+  subtitle: string
+  publishedAt: Date
+  content: string
+}
+
+function formatDate(date: Date): string {
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }).format(date)
+}
+```
+
+That's it for now. If you're reading this, welcome. I hope you find
+something useful here.

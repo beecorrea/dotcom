@@ -1,0 +1,181 @@
+/* ==========================================================================
+ * tufte-overrides.css — Adapt tufte-css to the beecorrea rose-gold theme
+ *
+ * These overrides live in the `theme` layer (imported after tufte) so they
+ * naturally win the cascade without needing extra specificity hacks.
+ *
+ * What we keep from Tufte CSS:
+ *   - Sidenote / margin-note positioning and numbering
+ *   - Label.margin-toggle mobile collapse behaviour
+ *
+ * What we override:
+ *   - Font families → Inter (body) / Newsreader (headings)
+ *   - Colors → rose-gold design tokens
+ *   - Article width → handled by .reading-container in globals.css
+ *   - Code blocks → --color-code-bg token
+ *   - Blockquote / epigraph → accent border
+ * ========================================================================== */
+
+@layer theme {
+  /* -- Typography overrides ------------------------------------------------ */
+  body,
+  article {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    color: var(--color-text);
+  }
+
+  /* -- Article width ------------------------------------------------------- */
+  /* Remove Tufte's own max-width so .reading-container controls layout */
+  article {
+    width: auto;
+    max-width: none;
+    padding: 0;
+  }
+
+  /* Let sections inherit the container width */
+  section {
+    width: auto;
+    padding: 0;
+  }
+
+  /* -- Color overrides ----------------------------------------------------- */
+  a:link,
+  a:visited {
+    color: var(--color-accent);
+  }
+
+  /* -- Sidenotes & margin notes ------------------------------------------- */
+  /* Inherit theme colours but keep Tufte's positioning rules intact */
+  .sidenote,
+  .marginnote {
+    color: var(--color-text-secondary);
+    font-family: var(--font-body);
+  }
+
+  /* -- Code styling -------------------------------------------------------- */
+  :not(pre) > code {
+    background-color: var(--color-code-bg);
+    color: var(--color-accent);
+    font-size: 0.85em;
+    border-radius: 0.25rem;
+    padding-inline: 0.3em;
+    padding-block: 0.15em;
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  }
+
+  pre {
+    background-color: var(--color-code-bg);
+    border-radius: 0.375rem;
+    padding: 1.25rem;
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
+    margin-block: 1.5rem;
+  }
+
+  pre > code {
+    background-color: transparent !important;
+    color: inherit;
+    font-size: 0.875em;
+    padding: 0;
+    margin: 0;
+    width: auto;
+    display: inline;
+  }
+
+  /* -- Shiki Dual Theme Overrides ----------------------------------------- */
+  @media (prefers-color-scheme: dark) {
+    html:not([data-theme='light']) .shiki {
+      background-color: var(--shiki-dark-bg) !important;
+      color: var(--shiki-dark) !important;
+    }
+    html:not([data-theme='light']) .shiki span {
+      color: var(--shiki-dark) !important;
+      font-style: var(--shiki-dark-font-style) !important;
+      font-weight: var(--shiki-dark-font-weight) !important;
+      text-decoration: var(--shiki-dark-text-decoration) !important;
+    }
+  }
+
+  html[data-theme='dark'] .shiki {
+    background-color: var(--shiki-dark-bg) !important;
+    color: var(--shiki-dark) !important;
+  }
+  html[data-theme='dark'] .shiki span {
+    color: var(--shiki-dark) !important;
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
+
+  /* -- Heading Anchors ---------------------------------------------------- */
+  .heading-anchor {
+    opacity: 0;
+    margin-inline-start: 0.5rem;
+    color: var(--color-accent);
+    text-decoration: none !important;
+    font-family: var(--font-body);
+    font-weight: normal;
+    font-size: 0.8em;
+    transition: opacity 0.2s ease, color 0.2s ease;
+  }
+
+  .heading-anchor:hover {
+    color: var(--color-accent-hover) !important;
+  }
+
+  h1:hover .heading-anchor,
+  h2:hover .heading-anchor,
+  h3:hover .heading-anchor,
+  h4:hover .heading-anchor,
+  h5:hover .heading-anchor,
+  h6:hover .heading-anchor {
+    opacity: 1;
+  }
+
+  /* -- Blockquote & epigraph ---------------------------------------------- */
+  blockquote,
+  .epigraph {
+    border-inline-start: 3px solid var(--color-accent);
+    padding-inline-start: 1.25rem;
+    color: var(--color-text-secondary);
+    font-style: italic;
+  }
+
+  blockquote footer,
+  .epigraph footer {
+    color: var(--color-text-secondary);
+    font-style: normal;
+  }
+
+  /* -- Horizontal rule ---------------------------------------------------- */
+  hr {
+    border: none;
+    border-block-start: 1px solid var(--color-border);
+  }
+
+  /* -- Table overrides ----------------------------------------------------- */
+  table {
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    border-block-end: 1px solid var(--color-border);
+    padding: 0.5rem 0.75rem;
+  }
+
+  th {
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-weight: 600;
+  }
+}

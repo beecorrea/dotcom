@@ -1,0 +1,162 @@
+/* ==========================================================================
+ * globals.css — Global styles for beecorrea
+ *
+ * Uses CSS cascade layers to guarantee specificity order:
+ *   reset → tufte → theme → components → utilities
+ *
+ * Dark mode uses `light-dark()` driven by `color-scheme`, with optional
+ * manual override via `[data-theme]` attribute on <html>.
+ * ========================================================================== */
+
+@layer reset, tufte, theme, components, utilities;
+
+/* --------------------------------------------------------------------------
+ * Reset Layer
+ * Minimal reset: box-sizing inheritance and body margin/padding removal.
+ * -------------------------------------------------------------------------- */
+@layer reset {
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+ * Tufte Layer
+ * Import tufte-css base styles. Overrides live in tufte-overrides.css.
+ * -------------------------------------------------------------------------- */
+@layer tufte {
+  @import 'tufte-css/tufte.css';
+}
+
+/* --------------------------------------------------------------------------
+ * Theme Layer
+ * Rose-gold design tokens, typography, base element styles, layout, and
+ * accessibility accommodations.
+ * -------------------------------------------------------------------------- */
+@layer theme {
+
+  /* -- Color scheme & design tokens ---------------------------------------- */
+  :root {
+    color-scheme: light dark;
+
+    /* Rose-gold palette — adapts automatically via light-dark() */
+    --color-bg: light-dark(#FFF8F6, #1F1A1C);
+    --color-bg-subtle: light-dark(#FFF0EC, #2D2226);
+    --color-text: light-dark(#3D2C2E, #F0E4E1);
+    --color-text-secondary: light-dark(#8C6B6F, #9A8A8E);
+    --color-accent: light-dark(#B76E79, #E8A0BF);
+    --color-accent-hover: light-dark(#A85A5C, #F0B8CF);
+    --color-gold: light-dark(#D4A574, #C49A6C);
+    --color-border: light-dark(#E8D5CF, #3D2C2E);
+    --color-code-bg: light-dark(#FEF0EC, #2D2226);
+
+    /* Handle styling tokens (rose-gold theme match) */
+    --color-handle-bg: light-dark(rgba(183, 110, 121, 0.16), rgba(232, 160, 191, 0.15));
+    --color-handle-bg-hover: light-dark(rgba(183, 110, 121, 0.28), rgba(232, 160, 191, 0.25));
+    --color-handle-text: light-dark(#9C525E, #E8A0BF);
+
+    /* Typography tokens */
+    --font-body: 'Newsreader', Georgia, serif;
+    --font-heading: 'Newsreader', Georgia, serif;
+    --font-ui: 'Inter', sans-serif;
+  }
+
+  /* Manual theme overrides via data attribute on <html> */
+  [data-theme='light'] {
+    color-scheme: light;
+  }
+
+  [data-theme='dark'] {
+    color-scheme: dark;
+  }
+
+  /* -- Base element styles ------------------------------------------------- */
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: clamp(1.0625rem, 0.5rem + 1vw, 1.25rem);
+    line-height: 1.7;
+    scrollbar-color: var(--color-accent) var(--color-bg-subtle);
+  }
+
+  /* Headings */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    text-wrap: balance;
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 1.25rem + 1.25vw, 2.25rem);
+  }
+
+  h3 {
+    font-size: clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
+  }
+
+  h4 {
+    font-size: clamp(1.125rem, 0.9rem + 0.5vw, 1.375rem);
+  }
+
+  /* Links */
+  a {
+    color: var(--color-accent);
+    text-underline-offset: 0.2em;
+    transition: color 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--color-accent-hover);
+  }
+
+  /* Text wrapping */
+  p,
+  li,
+  blockquote {
+    text-wrap: pretty;
+  }
+
+  /* Selection highlight */
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  /* -- Reading container --------------------------------------------------- */
+  .reading-container {
+    max-width: 42.5rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+
+
+  /* -- Accessibility ------------------------------------------------------- */
+  @media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
