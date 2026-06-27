@@ -100,7 +100,7 @@ const formattedDate = computed(() =>
 
 .post-card-subtitle {
   color: var(--color-text-secondary);
-  font-size: clamp(0.9375rem, 0.5rem + 0.8vw, 1.0625rem);
+  font-size: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
   line-height: 1.7;
   text-wrap: pretty;
 }
