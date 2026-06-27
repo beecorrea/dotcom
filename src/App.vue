@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import Footer from '@/components/Footer.vue'
+import { provideTheme } from '@/composables/useTheme'
+
+provideTheme()
 </script>
 
 <template>

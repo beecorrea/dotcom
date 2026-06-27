@@ -1,9 +1,20 @@
-import { ref, computed, onMounted, onUnmounted } from 'vue'
-import type { Ref, ComputedRef } from 'vue'
+import { ref, computed, onMounted, onUnmounted, provide, inject } from 'vue'
+import type { Ref, ComputedRef, InjectionKey } from 'vue'
 
 const STORAGE_KEY = 'handle-theme'
 
+export interface ThemeContext {
+  isDark: Ref<boolean>
+  theme: ComputedRef<'light' | 'dark'>
+  toggle: () => void
+  isDev: boolean
+}
+
+export const ThemeKey: InjectionKey<ThemeContext> = Symbol('Theme')
+
 export function useTheme() {
+  const isDev = import.meta.env.DEV
+
   const isDark: Ref<boolean> = ref(false)
 
   const theme: ComputedRef<'light' | 'dark'> = computed(() =>
@@ -67,5 +78,19 @@ export function useTheme() {
     mediaQuery?.removeEventListener('change', handleSystemChange)
   })
 
-  return { isDark, theme, toggle }
+  return { isDark, theme, toggle, isDev }
+}
+
+export function provideTheme(): ThemeContext {
+  const themeState = useTheme()
+  provide(ThemeKey, themeState)
+  return themeState
+}
+
+export function useThemeContext(): ThemeContext {
+  const themeState = inject(ThemeKey)
+  if (!themeState) {
+    throw new Error('useThemeContext must be used within a component providing ThemeKey')
+  }
+  return themeState
 }
