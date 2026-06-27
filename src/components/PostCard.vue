@@ -40,7 +40,29 @@ const formattedDate = computed(() =>
 
 <style scoped>
 .post-card {
+  position: relative;
   margin-block-end: 3rem;
+  cursor: pointer;
+}
+
+.post-card::before {
+  content: '';
+  position: absolute;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  left: -1rem;
+  width: 3px;
+  background-color: var(--color-accent);
+  opacity: 0;
+  transform: scaleY(0.8);
+  transform-origin: center;
+  transition: opacity 0.23s ease, transform 0.20s ease;
+  border-radius: 2px;
+}
+
+.post-card:hover::before {
+  opacity: 1;
+  transform: scaleY(1);
 }
 
 .post-card-date {
@@ -66,10 +88,14 @@ const formattedDate = computed(() =>
   text-decoration: none;
 }
 
-.post-card-link:hover {
-  text-decoration: underline;
-  text-decoration-color: var(--color-accent);
-  text-underline-offset: 0.2em;
+.post-card-link::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
 }
 
 .post-card-subtitle {

@@ -25,6 +25,15 @@
     background-color: var(--color-bg);
   }
 
+  p,
+  dl,
+  ol,
+  ul,
+  blockquote {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
   h1,
   h2,
   h3,
@@ -41,10 +50,25 @@
     padding: 0;
   }
 
-  /* Let sections inherit the container width */
+  /* Let sections inherit the container width and expand elements to full width */
   section {
     width: auto;
     padding: 0;
+  }
+
+  section > p,
+  section > footer,
+  section > table,
+  blockquote p,
+  blockquote footer {
+    width: 100%;
+  }
+
+  section > dl,
+  section > ol,
+  section > ul {
+    width: 100%;
+    padding-inline-start: 1.5rem;
   }
 
   /* -- Color overrides ----------------------------------------------------- */
