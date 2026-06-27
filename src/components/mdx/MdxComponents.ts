@@ -1,3 +1,6 @@
+import CareerTabs from '../CareerTabs.vue'
+import TabPanel from '../TabPanel.vue'
+
 /**
  * MDX component overrides for the blog's MDXProvider.
  *
@@ -16,6 +19,9 @@
  * } as const
  * ```
  */
-const mdxComponents = {} as const
+const mdxComponents = {
+  CareerTabs,
+  TabPanel,
+} as const
 
 export default mdxComponents
