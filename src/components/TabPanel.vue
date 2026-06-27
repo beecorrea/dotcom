@@ -1,17 +1,13 @@
 <script setup lang="ts">
-import { inject, onMounted, onUnmounted, computed, useId } from 'vue'
+import { inject, onMounted, computed, useId } from 'vue'
+import type { TabsContext } from '@/types'
 
 const props = defineProps<{
   label: string
 }>()
 
 const id = useId()
-
-const context = inject<{
-  activeTabId: { value: string }
-  registerTab: (id: string, label: string) => void
-  unregisterTab: (id: string) => void
-}>('tabs-context')
+const context = inject<TabsContext>('tabs-context')
 
 if (!context) {
   throw new Error('TabPanel must be used inside CareerTabs')
@@ -19,10 +15,6 @@ if (!context) {
 
 onMounted(() => {
   context.registerTab(id, props.label)
-})
-
-onUnmounted(() => {
-  context.unregisterTab(id)
 })
 
 const isActive = computed(() => context.activeTabId.value === id)

@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import { ref, provide } from 'vue'
+import type { Tab, TabsContext } from '@/types'
 
-const tabs = ref<{ id: string; label: string }[]>([])
+const tabs = ref<Tab[]>([])
 const activeTabId = ref('')
 
+/**
+ * Registers a tab panel's ID and label to be displayed in the tab navigation.
+ * Automatically sets the first registered tab as active.
+ */
 const registerTab = (id: string, label: string) => {
   if (!tabs.value.some(t => t.id === id)) {
     tabs.value.push({ id, label })
@@ -13,22 +18,15 @@ const registerTab = (id: string, label: string) => {
   }
 }
 
-const unregisterTab = (id: string) => {
-  tabs.value = tabs.value.filter(t => t.id !== id)
-  if (activeTabId.value === id && tabs.value.length > 0) {
-    activeTabId.value = tabs.value[0].id
-  }
-}
-
-provide('tabs-context', {
-  activeTabId,
-  registerTab,
-  unregisterTab,
-})
-
 const selectTab = (id: string) => {
   activeTabId.value = id
 }
+
+provide<TabsContext>('tabs-context', {
+  activeTabId,
+  registerTab,
+})
+
 </script>
 
 <template>
