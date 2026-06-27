@@ -8,9 +8,9 @@ const route = useRoute()
 const { isDark, toggle: toggleTheme } = useTheme()
 const isDev = import.meta.env.DEV
 
-// Dynamic target: '/' goes to '/about', other pages go to '/'
+// Dynamic target: '/' goes to '/posts/about', other pages go to '/'
 const brandLinkTarget = computed(() => {
-  return route.path === '/' ? '/about' : '/'
+  return route.path === '/' ? '/posts/about' : '/'
 })
 </script>
 

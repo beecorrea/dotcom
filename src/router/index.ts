@@ -9,8 +9,7 @@ export const routes: RouteRecordRaw[] = [
   },
   {
     path: '/about',
-    name: 'about',
-    component: () => import('@/views/AboutView.vue'),
+    redirect: '/posts/about',
   },
   {
     path: '/posts',
