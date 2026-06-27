@@ -5,21 +5,24 @@ import type { Tab, TabsContext } from '@/types'
 const tabs = ref<Tab[]>([])
 const activeTabId = ref('')
 
+const hasSelected = ref(false)
+
 /**
  * Registers a tab panel's ID and label to be displayed in the tab navigation.
  * Automatically sets the first registered tab as active.
  */
 const registerTab = (id: string, label: string) => {
   if (!tabs.value.some(t => t.id === id)) {
-    tabs.value.push({ id, label })
-    if (!activeTabId.value) {
-      activeTabId.value = id
+    tabs.value.unshift({ id, label })
+    if (!hasSelected.value) {
+      activeTabId.value = tabs.value[0].id
     }
   }
 }
 
 const selectTab = (id: string) => {
   activeTabId.value = id
+  hasSelected.value = true
 }
 
 provide<TabsContext>('tabs-context', {
