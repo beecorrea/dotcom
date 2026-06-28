@@ -16,11 +16,13 @@ const allNotes: Note[] = Object.entries(noteModules).map(([path, module]) => {
     subtitle: module.frontmatter.subtitle || '',
     publishedAt: module.frontmatter.publishedAt || new Date().toISOString().split('T')[0],
     slug,
+    hide: module.frontmatter.hide,
   }
 
   return {
     meta,
     component: module.default,
+    hide: module.frontmatter.hide,
   }
 })
 

@@ -6,12 +6,14 @@ export interface NoteMeta {
   subtitle: string
   publishedAt: string
   slug: string
+  hide?: boolean
 }
 
 /** A fully resolved blog note: its metadata paired with the compiled MDX component. */
 export interface Note {
   meta: NoteMeta
   component: Component
+  hide?: boolean
 }
 
 /** A single tab item's metadata. */

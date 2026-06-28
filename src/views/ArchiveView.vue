@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
 import { useNotes } from '@/composables/useNotes'
-import Navbar from '@/components/Navbar.vue'
+import Navbar from '@/components/navbar/Navbar.vue'
 import NoteCard from '@/components/note/NoteCard.vue'
 import { SITE_DESCRIPTION } from '@/constants'
 

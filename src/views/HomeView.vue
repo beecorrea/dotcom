@@ -3,15 +3,17 @@ import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useHead } from '@unhead/vue'
 import { useNotes } from '@/composables/useNotes'
-import Navbar from '@/components/Navbar.vue'
+import Navbar from '@/components/navbar/Navbar.vue'
 import NoteCard from '@/components/note/NoteCard.vue'
 
 import { SITE_DESCRIPTION } from '@/constants'
 
 const { notes } = useNotes()
 
+const visibleNotes = computed(() => notes.value.filter((note) => !note.hide))
+
 // Only show the 2 most recent notes on the homepage
-const recentNotes = computed(() => notes.value.slice(0, 2))
+const recentNotes = computed(() => visibleNotes.value.slice(0, 2))
 
 useHead({
   title: '@bianca',
@@ -44,11 +46,11 @@ useHead({
         :slug="note.meta.slug"
       />
 
-      <p v-if="notes.length === 0" class="empty-state">
+      <p v-if="visibleNotes.length === 0" class="empty-state">
         No notes yet. Check back soon.
       </p>
 
-      <div v-if="notes.length > 0" class="archive-link-container">
+      <div v-if="visibleNotes.length > 0" class="archive-link-container">
         <RouterLink to="/notes" class="archive-link">
           All notes &rarr;
         </RouterLink>

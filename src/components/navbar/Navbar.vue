@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
-import BrandHandle from '@/components/BrandHandle.vue'
-import ThemeToggle from '@/components/ThemeToggle.vue'
+import BrandHandle from './BrandHandle.vue'
+import ThemeToggle from './ThemeToggle.vue'
 
 const route = useRoute()
 
