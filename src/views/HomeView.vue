@@ -10,9 +10,9 @@ import { SITE_DESCRIPTION } from '@/constants'
 
 const { notes } = useNotes()
 
-const visibleNotes = computed(() => notes.value.filter((note) => !note.hide))
 
 // Only show the 2 most recent notes on the homepage
+const visibleNotes = computed(() => notes.value.filter((note) => !note.hide))
 const recentNotes = computed(() => visibleNotes.value.slice(0, 2))
 
 useHead({
