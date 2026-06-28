@@ -1,8 +1,8 @@
 <template>
-  <div class="image-center-wrapper">
+  <figure class="image-center-wrapper">
     <img :src="image" :alt="caption" class="note-image" />
     <figcaption class="note-image-caption">{{ caption }}</figcaption>
-  </div>
+  </figure>
 </template>
 
 <script setup lang="ts">
