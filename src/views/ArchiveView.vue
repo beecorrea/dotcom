@@ -23,7 +23,7 @@ useHead({
     <Navbar />
 
     <header class="archive-header">
-      <h1 class="archive-title">Writing</h1>
+      <h1 class="archive-title">Notes</h1>
     </header>
 
     <section aria-label="All notes">
