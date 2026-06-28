@@ -5,7 +5,7 @@ import { useHead } from '@unhead/vue'
 import { MDXProvider } from '@mdx-js/vue'
 import { useNotes } from '@/composables/useNotes'
 import Navbar from '@/components/Navbar.vue'
-import NoteHeader from '@/components/NoteHeader.vue'
+import NoteHeader from '@/components/note/NoteHeader.vue'
 import mdxComponents from '@/components/mdx/MdxComponents'
 import { SITE_DESCRIPTION } from '@/constants'
 

@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router'
 import { useHead } from '@unhead/vue'
 import { useNotes } from '@/composables/useNotes'
 import Navbar from '@/components/Navbar.vue'
-import NoteCard from '@/components/NoteCard.vue'
+import NoteCard from '@/components/note/NoteCard.vue'
 
 import { SITE_DESCRIPTION } from '@/constants'
 
