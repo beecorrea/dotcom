@@ -5,11 +5,13 @@ publishedAt: "2026-06-28"
 hide: true
 ---
 
-import dataBuImage from '../../src/assets/data_bu_2023.jpeg'
+import capote from './images/rua_capote_valente_39_2023.jpeg'
+import pasteur from './images/av_pasteur_138_2019.jpg'
 
 <Tabs>
   <Tab label="IBM">
     I started my career at [IBM](https://www.ibm.com) in 2019 as a Software Engineer Intern within the IBM Global Financing (IGF) business unit and was later hired as a full-time Application Developer in the Rio de Janeiro office.
+    <NoteImage image={pasteur} caption="View from the IBM office, circa 2019." />
 
     Our team helped Business Operations teams in North America and LATAM by modernizing and automating sensitive financial and accounting processes that were still stuck with 1950s technology (and some of them are *still* stuck 😅).
 
@@ -70,10 +72,7 @@ import dataBuImage from '../../src/assets/data_bu_2023.jpeg'
   <Tab label="Nubank">
     My stay at [Nubank](https://international.nubank.com.br/about) began on July 2023 when I joined **Data BU**, which is one of the most technically intensive BU, if not *the* most intense, due to Nubank being an AI-native, data-driven company (I like to say that Nubankers breathe data instead of oxygen). 
 
-    <div class="image-center-wrapper">
-      <img src={dataBuImage} alt="Data BU" class="career-image" />
-      <figcaption class="career-image-caption">Data BU folks during our yearly onsite in HQ1, circa 2023</figcaption>
-    </div>
+    <NoteImage image={capote} caption="Data BU folks during our yearly onsite in HQ1, circa 2023" />
 
     In short, Data BU is the single source of truth of each and every data used by the business:
     * OKRs, KPIs, NPS and other customer data.
