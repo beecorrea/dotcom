@@ -17,6 +17,7 @@
  * ========================================================================== */
 
 @layer theme {
+
   /* -- Typography overrides ------------------------------------------------ */
   body,
   article {
@@ -56,17 +57,17 @@
     padding: 0;
   }
 
-  section > p,
-  section > footer,
-  section > table,
+  section>p,
+  section>footer,
+  section>table,
   blockquote p,
   blockquote footer {
     width: 100%;
   }
 
-  section > dl,
-  section > ol,
-  section > ul {
+  section>dl,
+  section>ol,
+  section>ul {
     width: 100%;
     padding-inline-start: 1.5rem;
   }
@@ -86,7 +87,7 @@
   }
 
   /* -- Code styling -------------------------------------------------------- */
-  :not(pre) > code {
+  :not(pre)>code {
     background-color: var(--color-code-bg);
     color: var(--color-accent);
     font-size: 0.85em;
@@ -105,7 +106,7 @@
     margin-block: 1.5rem;
   }
 
-  pre > code {
+  pre>code {
     background-color: transparent !important;
     color: inherit;
     font-size: 0.875em;
@@ -121,6 +122,7 @@
       background-color: var(--shiki-dark-bg) !important;
       color: var(--shiki-dark) !important;
     }
+
     html:not([data-theme='light']) .shiki span {
       color: var(--shiki-dark) !important;
       font-style: var(--shiki-dark-font-style) !important;
@@ -133,6 +135,7 @@
     background-color: var(--shiki-dark-bg) !important;
     color: var(--shiki-dark) !important;
   }
+
   html[data-theme='dark'] .shiki span {
     color: var(--shiki-dark) !important;
     font-style: var(--shiki-dark-font-style) !important;
@@ -201,5 +204,38 @@
     color: var(--color-text);
     font-family: var(--font-heading);
     font-weight: 600;
+  }
+
+  /* -- Responsive post images -------------------------------------------- */
+  .image-center-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-block: 2.5rem;
+    width: 100%;
+  }
+
+  .career-image {
+    width: 100%;
+    max-width: 18rem; /* Small on mobile */
+    height: auto;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .career-image-caption {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    margin-top: 0.5rem;
+    text-align: center;
+    font-family: var(--font-body);
+    font-style: italic;
+  }
+
+  @media (min-width: 768px) {
+    .career-image {
+      max-width: 32rem; /* Medium on desktop */
+    }
   }
 }

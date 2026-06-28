@@ -4,6 +4,8 @@ subtitle: "Detailed breakdown of my career."
 publishedAt: "2026-06-28"
 ---
 
+import dataBuImage from '../../src/assets/data_bu_2023.jpeg'
+
 <Tabs>
   <Tab label="IBM">
     I started my career at [IBM](https://www.ibm.com) in 2019 as a Software Engineer Intern within the IBM Global Financing (IGF) business unit and was later hired as a full-time Application Developer in the Rio de Janeiro office.
@@ -66,7 +68,12 @@ publishedAt: "2026-06-28"
   </Tab>
   <Tab label="Nubank">
     My stay at [Nubank](https://international.nubank.com.br/about) began on July 2023 when I joined **Data BU**, which is one of the most technically intensive BU, if not *the* most intense, due to Nubank being an AI-native, data-driven company (I like to say that Nubankers breathe data instead of oxygen). 
-    
+
+    <div class="image-center-wrapper">
+      <img src={dataBuImage} alt="Data BU" class="career-image" />
+      <figcaption class="career-image-caption">Data BU folks during our yearly onsite in HQ1, circa 2023</figcaption>
+    </div>
+
     In short, Data BU is the single source of truth of each and every data used by the business:
     * OKRs, KPIs, NPS and other customer data.
     * Model features, training sets and machine learning models itself.
@@ -90,9 +97,9 @@ publishedAt: "2026-06-28"
     ## Multi-Repos / Archipelago Program
     Multi-Repos was by far the best project I worked on in my life. I joined the team as a Senior Software Engineer on November 2023, and left as a Lead Software Engineer on November 2025.
 
-    The main goal of Multi-Repos was evolving from a 10-year old monorepo Data Production Platform that backed the Data Lakehouse into a distributed system capable of supporting a Data Mesh beyond the petabyte scale.
+    The main goal of Multi-Repos was evolving from a 10-year old monorepo Data Production Platform that backed the company's Data Lakehouse into a distributed system capable of supporting a Data Mesh beyond the petabyte scale.
     
-    We had to design the new platform from scratch. Like, actually from scratch. We were less than 50 engineers equipped with a blank Miro board, a couple AWS accounts, Clojure microservices and a dream. On the other side was the legacy platform, hundreds of thousands of Spark apps and a $70B neobank. No pressure.
+    We had to design the new platform from scratch. Like, actually from scratch. We were less than 50 engineers equipped with a blank Miro board, a couple AWS accounts, Clojure microservices and a dream. On the other side was the legacy platform, hundreds of thousands of Spark apps and a neobank valued at $70B. No pressure.
 
     We spent 2024 shipping quartely iterations on the new platform, starting with distributed orchestration of DAGs in Q1, into periodic scheduling and data integration in Q2, and finally reverse ETL, incremental compute, incident and change management in Q3 and Q4. We finished 2024 with around 10 use cases running in production, including Model Monitoring, AML and Personal Loans.
 
@@ -100,13 +107,13 @@ publishedAt: "2026-06-28"
 
     We had to elevate the team's engineering maturity by adopting SRE practices, scaling the program's ADR and RFCs processes to newly founded teams, redefining our customer support process, sharing knowledge with other teams about the platform and rebuilding our project management framework. 
     
-    I had to mentor and influence engineers across the 16+ teams participating in the Program, teach them how the platform worked, its nuances and failure modes. All of that while performing engineering duties like coding and system design, interviewing candidates and ensuring my team's success and career development.
+    I mentored and influenced engineers across the 16+ teams participating in the Program, taught them how the platform worked, its nuances and failure modes. All of that while performing engineering duties like coding and system design, interviewing candidates and ensuring my team's success and career development.
 
     In Q2 and Q3, we had grown to 120+ use cases and started onboarding more platform capabilities such as AI Platform & MLOps, Access Control, Data Contracts and the new Feature Store, all while doing the work we already did until then. Me and a Senior Staff Engineer paired to reformulate how we shared work with other teams, creating a self-service platform that allowed teams to independently add their own capabilities to Multi-Repos.
 
     Working on Multi-Repos raised my skills to a completely different level: software engineering, problem solving, leadership, culture, engineering management, decision making and so many other skills. I met world class engineers and industry leaders that completely shifted my understanding of building companies. I also made many friends there that I love and care and am still close to this day ❤️.
 
-    I'm now looking to help organizations solve these gnarly, nasty, crazy engineering challenges that keep people awake at night. If you happen to know a company or team that could use my help, feel free to [contact me on LinkedIn](https://www.linkedin.com/in/beecorrea).
+    
   </Tab>
 </Tabs>
 
