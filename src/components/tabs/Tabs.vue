@@ -13,9 +13,9 @@ const hasSelected = ref(false)
  */
 const registerTab = (id: string, label: string) => {
   if (!tabs.value.some(t => t.id === id)) {
-    tabs.value.unshift({ id, label })
+    tabs.value.push({ id, label })
     if (!hasSelected.value) {
-      activeTabId.value = tabs.value[0].id
+      activeTabId.value = tabs.value[tabs.value.length - 1].id
     }
   }
 }
@@ -33,7 +33,7 @@ provide<TabsContext>('tabs-context', {
 </script>
 
 <template>
-  <div class="career-tabs">
+  <div class="tabs">
     <div class="tabs-header-wrapper">
       <div role="tablist" aria-label="Career History" class="tabs-header">
         <button
@@ -57,7 +57,7 @@ provide<TabsContext>('tabs-context', {
 </template>
 
 <style scoped>
-.career-tabs {
+.tabs {
   margin-block: 2rem;
 }
 

@@ -4,111 +4,24 @@ subtitle: "A little about me."
 publishedAt: "2026-06-26"
 ---
 
-# Me
-Hi there, I'm Bianca Corrêa! I'm a [travesti](https://en.wikipedia.org/wiki/Travesti_(gender_identity)) and use she/her pronouns. 
-I'm a Software Engineer with a B.Sc in Computer Science at [IC-UFF](https://www.ic.uff.br/ciencia-da-computacao/). This site contains my thoughts about computer science, engineering leadership, software engineering and infrastructure.
+Hi there, I'm Bianca Corrêa! I'm a [travesti](https://en.wikipedia.org/wiki/Travesti_(gender_identity)) and use she/her pronouns.
 
-# Career
+<Tabs>
+<Tab label="Personal">
+My hobbies include learning about topics in computer science, watching horror movies and playing video games.
 
-<CareerTabs>
-  <TabPanel label="IBM">
-    I started my career at [IBM](https://www.ibm.com) in 2019 as a Software Engineer Intern within the IBM Global Financing (IGF) business unit and was later hired as a full-time Application Developer in the Rio de Janeiro office.
+I've been playing video games since I was 6yo and began competing around 13yo. I played against top players and teams in games like Call of Duty (rivalised MIBR back in 2010s), Monster Hunter (600+ hours in MH: World) and League of Legends (peaked top 1% in BR, played 10,000+ hours).
+</Tab>
+<Tab label="Professional">
 
-    Our team helped Business Operations teams in North America and LATAM by modernizing and automating sensitive financial and accounting processes that were still stuck with 1950s technology (and some of them are *still* stuck 😅).
+I enrolled in a Computer Science undergraduate course at [IC-UFF](https://www.ic.uff.br/ciencia-da-computacao/) in 2015, proceeded to fail most classes for a couple years and managed to graduate in 2021 during the [COVID-19 pandemic](https://en.wikipedia.org/wiki/COVID-19_pandemic). 
 
-    We did this by building internal web apps and web crawlers using [Vue.js](https://vuejs.org) and [Node.js](https://nodejs.org), which ran on IBM's [OpenShift-based](https://www.redhat.com) internal cloud. 
-    The crawlers ran within Linux & Windows VMs which seamlessly integrated with the company's infrastructure (which is insanely huge!).
+In my TCC *"Uma Avaliação Do Twitter Baseada Em Privacidade, Segurança, Explicabilidade, Não Discriminação E Promoção De Valores Humanos"*, I wrote an essay on ethical issues in data products (especially AI products) and how it impacts end-users. You can [read it here](https://docs.google.com/document/d/1KZTSzHc4EOWDerYRW39SXodvvgiNJ01Y/edit?usp=sharing&ouid=104773396691233261933&rtpof=true&sd=true), although I had to redact my deadname for privacy reasons.
 
-    Together, we helped save over 10,000+ hours of manual work each year in just 5 countries. We then went on to expand this solution across all continents where IGF operates.
+Throughout my [career](/career) I have worked at top companies in Brazil like Nubank, iFood and IBM.
 
-    My pet project was an API used to store and retrieve the secrets and password that crawlers used to login into internal web pages and perform actions. It included a Vue.js UI backed by a Node.js BFF that allowed end-users to manage their secrets and passwords. By the end, we tried to patent this project as the team's second patent but failed to get one due to changing company priorities.
+I'm well-versed in a range of areas, such as Software Engineering, Product Engineering, Site Reliability Engineering, Platform Engineering, Distributed Systems and Engineering Leadership & Management. 
 
-    I learned a lot about information security and cryptography during this project, as the company deals with the world's largest banks, governments, airlines, and healthcare systems ("invisible but everywhere").
-  </TabPanel>
-
-  <TabPanel label="isaac">
-    ### "B2C" / Parents Tribe
-    I joined [isaac](https://isaac.com.br) about 1 year after it was founded, on August 2021. Some friends from college were working there, so I figured I'd go as well.
-
-    My first team — which was called "B2C" back then — had ~8 people in total. That was a shock after leaving a company with 300,000 employees all over the world.
-
-    There, I worked on the company's backoffice which used [React.js](https://react.dev/) and [Golang](https://go.dev), which was used by isaac's team to manage enrollments, billing, invoicing and payments.
-
-    After that, I was promoted and went on to help building the first version of the CX Platform, which sped up customer support operations by providing guardrails and analytics to customer experience analysts.
-
-    Then, I paired with our sibling team's Staff Engineer to design the new version of the Billing & Payments Platform. I ended up writing a distributed orchestrator that integrated with the Payments Platform to send over 10,000 invoices each month.
-
-    It was later moved to another team and deprecated due to business changes. Personally, I also wanted to deprecate it as it was way more than the business need, but that was a great lesson on system design and prioritization.
-
-    ### Platforms
-    On June 2022 I joined the Platforms team to support the hypergrowth isaac was experiencing. 
-
-    The main goal was to support the Engineering org's migration from monoliths to [microservices](https://microservices.io/index.html) architecture.
-
-    I created a bunch of cool things there and even gave a talk at [The Developer Conference](https://thedevconf.com/pt) with my manager and the CTO.
-
-    I went on to ship most components of the microservices platform: 
-    * GitHub CI/CD, Org Governance and new hire onboarding.
-    * Developer Portal and Service Catalog.
-    * Observability, Alerting and Dashboards.
-    * Golden Images with Google's [Distroless](https://github.com/googlecontainertools/distroless).
-
-    Also, I set up our first ticket tracking system using GitHub issues (low budget 😆). It reduced the team's interruption rate and improved our SLA, but getting business metrics from GitHub sucked (and still sucks for **every product**).
-
-    By 2022Q4, the C-levels [sold the company](https://braziljournal.com/arco-compra-isaac-por-us-150-milhoes-mais-um-down-round-de-tech) to Arco Educação, one of the world's biggest edutech companies.
-  </TabPanel>
-  <TabPanel label="iFood">
-    After leaving **isaac**, I joined [iFood](https://ifood.com.br) in January 2023. I was assigned to the Kafka & NoSQL team within the SRE org.
-
-    iFood is one of those companies where a couple hours of downtime costs the company millions of dollars. Since the company is a [heavy user](https://www.confluent.io/customers/ifood) of event-driven architecture, the clusters need many 9's of availability.
-
-    Most of the platform was already implemented using an **in-house infra-as-code + GitOps** solution. I improved upon this solution, adding validations to prevent common developer mistakes such as deleting a topic while client apps were still running inside Kubernetes.
-
-    I also helped with daily operations work by troubleshooting incidents from upstream teams, like the time someone accidentally ran a load test which produced 80 million events in production instead of staging, and then wondered why nothing was happening 😅.
-
-    My last project was a FinOps pipeline written in Golang to split cloud costs between every client of every cluster. Previously, cost was split by business unit. This new pipeline increased the granularity of cost visibility to Kafka clients (producer, consumer). The impact was that teams no longer paid for network and storage they didn't use, improving company financial health and allowing data-driven decision making related to Kafka.
-
-    Working there taught me a lot about engineering reliability at scale and the dangers of failing to do so at a company whose mission is feeding the future of the world. After six months, I accepted an offer join Nubank.
-  </TabPanel>
-  <TabPanel label="Nubank">
-    My stay at [Nubank](https://international.nubank.com.br/about) began on July 2023 when I joined **Data BU**, which is one of the most technically intensive BU, if not *the* most intense, due to Nubank being an AI-native, data-driven company (I like to say that people at Nubank breathe data instead of oxygen). 
-    
-    In short, Data BU is the single source of truth of each and every data used by the business:
-    * OKRs, KPIs, NPS and other customer data.
-    * Model features, training sets and machine learning models itself.
-    * Hardware resources, cloud costs and developer productivity metrics.
-    * Reports for government institutions like BACEN, accounting ledgers, fraud pipelines and credit lines.
-    * App usage metrics, Jira metrics, and even Prometheus metrics.
-    
-    Much like Google and Meta, Nubank is one of those elite companies that people dream (dreamt?) of working at. One could even say that Nubank's bar is an entire flight of stairs above other brazilian companies. Data BU, however, is an elite team inside an elite company. We worked on some of the craziest, nastiest engineering problems I've seen in my career. Every now and then, a new hire would happily join the BU, only to leave a quarter later due to the sheer scale and technical complexity of the projects 😆.
-
-    ## BI Platform
-    My first team was formerly known as BI Platform, which had around 15 people at the time split into two teams (most of them were women!). I was responsible for operating and evolving our Analytics Platform, which consisted of Databricks and Looker. Nearly every employee used our tools every day to explore data and run critical business processes.
-    
-    I'm not exaggerating when I say that Nubank Engineers are expected to solve every problem using software. Like other teams, we had many Clojure scripts, services and lambdas to automate processes and ensure the BI Platform was reliable. After a while we started using Terraform to automate Databricks cluster provisioning and workspace creation.
-
-    My main focus there was migrating our Databricks environments to their new E2 architecture. Most of the work was operational: troubleshooting Databricks and Spark issues, managing IAM and Notebook permissions, doing right-sizing and capacity planning for workloads and dealing with EC2 instance quota starvation — a daily problem at Nubank. During the migration, our team handled 12+ support tickets every day, using a daily rotation to prevent engineer burnout
-
-    After a quarter there, the BU had a reorg and I was moved to Multi-Repos.
-
-    ## Multi-Repos / Archipelago Program
-    Multi-Repos was by far the best project I worked on in my life. I joined the team as a Senior Software Engineer on November 2023, and left as a Lead Software Engineer on November 2025.
-
-    The main goal of Multi-Repos was evolving from a 10-year old monorepo Data Production Platform that backed the Data Lakehouse into a distributed system capable of supporting a Data Mesh beyond the petabyte scale.
-    
-    We had to design the new platform from scratch. Like, actually from scratch. We were less than 50 engineers equipped with a blank Miro board, a couple AWS accounts, Clojure microservices and a dream. On the other side was the legacy platform, hundreds of thousands of Spark apps and a $70B neobank. No pressure.
-
-    We spent 2024 shipping quartely iterations on the new platform, starting with distributed orchestration of DAGs in Q1, into periodic scheduling and data integration in Q2, and finally reverse ETL, incremental compute, incident and change management in Q3 and Q4. We finished 2024 with around 10 use cases running in production, including Model Monitoring, AML and Personal Loans.
-
-    By 2025, the BU had grown to around 160 people and our team had matured a lot. We reached the product's adoption tipping point and started onboarding 5+ use cases each week until the end of the year while doing 100+ support tickets every month. A simple change to the platform could now risk breaking important fraud detection processes, crash a credit line or outright cause inconsistencies in our ledgers and books, costing the company millions of dollars.
-
-    We had to elevate the team's engineering maturity by adopting SRE practices, scaling ADR and RFCs processes to other teams, redefining our customer support process, sharing knowledge with other teams about the platform and rebuilding our project management framework. I had to mentor and influence engineers across the 16+ teams participating in the Program, teach them how the platform worked, its nuances and failure modes. All of that while performing engineering duties like coding and system design, interviewing candidates and ensuring my team's success and career development.
-
-    In Q2 and Q3, we had grown to 120+ use cases and started onboarding more platform capabilities such as AI Platform & MLOps, Access Control, Data Contracts and the new Feature Store, all while doing the work we already did until then. Me and a Senior Staff Engineer paired to reformulate how we shared work with other teams, creating a self-service platform that allowed teams to independently add their own capabilities to Multi-Repos.
-
-    If you read everything until here, you probably already know what happened on November 2025 😆. Working on Multi-Repos raised my skills to a completely different level: software engineering, problem solving, leadership, culture, engineering management, decision making and so many other skills. I met world class engineers and industry leaders that completely shifted my understanding of building companies. I also made many friends there that I love and care and am still close to this day ❤️.
-
-    I'm now looking to help organizations solve these gnarly, nasty, crazy engineering challenges that keep people awake at night. If you happen to know a company or team that could use my help, feel free to [contact me on LinkedIn](https://www.linkedin.com/in/beecorrea).
-  </TabPanel>
-</CareerTabs>
-
+Currently, I'm helping engineering orgs tackle gnarly, nasty Software Engineering challenges that keep people awake at night. If you happen to know a company or team that could use my help, feel free to [contact me on LinkedIn](https://www.linkedin.com/in/beecorrea).
+</Tab>
+</Tabs>

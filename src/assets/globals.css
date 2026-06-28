@@ -64,8 +64,8 @@
     --color-handle-text: light-dark(#9C525E, #E8A0BF);
 
     /* Typography tokens */
-    --font-body: 'Newsreader', Georgia, serif;
-    --font-heading: 'Newsreader', Georgia, serif;
+    --font-body: 'Domine', Georgia, serif;
+    --font-heading: 'Merriweather, Merriweather Fallback', Georgia, serif;
     --font-ui: 'Inter', sans-serif;
   }
 

@@ -12,6 +12,10 @@ export const routes: RouteRecordRaw[] = [
     redirect: '/posts/about',
   },
   {
+    path: '/career',
+    redirect: '/posts/career',
+  },
+  {
     path: '/posts',
     name: 'posts',
     component: () => import('@/views/ArchiveView.vue'),
