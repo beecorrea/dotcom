@@ -1,16 +1,16 @@
 import type { Component, Ref } from 'vue'
 
-/** Frontmatter metadata extracted from an MDX blog post. */
-export interface PostMeta {
+/** Frontmatter metadata extracted from an MDX blog note. */
+export interface NoteMeta {
   title: string
   subtitle: string
   publishedAt: string
   slug: string
 }
 
-/** A fully resolved blog post: its metadata paired with the compiled MDX component. */
-export interface Post {
-  meta: PostMeta
+/** A fully resolved blog note: its metadata paired with the compiled MDX component. */
+export interface Note {
+  meta: NoteMeta
   component: Component
 }
 

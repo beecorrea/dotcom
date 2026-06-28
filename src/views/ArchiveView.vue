@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-import { usePosts } from '@/composables/usePosts'
+import { useNotes } from '@/composables/useNotes'
 import Navbar from '@/components/Navbar.vue'
-import PostCard from '@/components/PostCard.vue'
+import NoteCard from '@/components/NoteCard.vue'
 import { SITE_DESCRIPTION } from '@/constants'
 
-const { posts } = usePosts()
+const { notes } = useNotes()
 
 useHead({
-  title: '@bianca — All Posts',
+  title: '@bianca — All Notes',
   meta: [
     {
       name: 'description',
-      content: `A complete archive of blog posts on @bianca. ${SITE_DESCRIPTION}`,
+      content: `A complete archive of notes on @bianca. ${SITE_DESCRIPTION}`,
     },
   ],
 })
@@ -26,18 +26,18 @@ useHead({
       <h1 class="archive-title">Writing</h1>
     </header>
 
-    <section aria-label="All blog posts">
-      <PostCard
-        v-for="post in posts"
-        :key="post.meta.slug"
-        :title="post.meta.title"
-        :subtitle="post.meta.subtitle"
-        :published-at="post.meta.publishedAt"
-        :slug="post.meta.slug"
+    <section aria-label="All notes">
+      <NoteCard
+        v-for="note in notes"
+        :key="note.meta.slug"
+        :title="note.meta.title"
+        :subtitle="note.meta.subtitle"
+        :published-at="note.meta.publishedAt"
+        :slug="note.meta.slug"
       />
 
-      <p v-if="posts.length === 0" class="empty-state">
-        No posts yet. Check back soon.
+      <p v-if="notes.length === 0" class="empty-state">
+        No notes yet. Check back soon.
       </p>
     </section>
   </div>

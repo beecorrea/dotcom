@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
-import type { PostMeta } from '@/types'
+import type { NoteMeta } from '@/types'
 
 interface Props {
-  title: PostMeta['title']
-  subtitle: PostMeta['subtitle']
-  publishedAt: PostMeta['publishedAt']
-  slug: PostMeta['slug']
+  title: NoteMeta['title']
+  subtitle: NoteMeta['subtitle']
+  publishedAt: NoteMeta['publishedAt']
+  slug: NoteMeta['slug']
 }
 
 const props = defineProps<Props>()
@@ -23,29 +23,29 @@ const formattedDate = computed(() =>
 </script>
 
 <template>
-  <article class="post-card">
-    <h2 class="post-card-title">
-      <RouterLink :to="`/posts/${slug}`" class="post-card-link">
+  <article class="note-card">
+    <h2 class="note-card-title">
+      <RouterLink :to="`/notes/${slug}`" class="note-card-link">
         {{ title }}
       </RouterLink>
     </h2>
 
-    <time :datetime="publishedAt" class="post-card-date">
+    <time :datetime="publishedAt" class="note-card-date">
       {{ formattedDate }}
     </time>
 
-    <p class="post-card-subtitle">{{ subtitle }}</p>
+    <p class="note-card-subtitle">{{ subtitle }}</p>
   </article>
 </template>
 
 <style scoped>
-.post-card {
+.note-card {
   position: relative;
   margin-block-end: 3rem;
   cursor: pointer;
 }
 
-.post-card::before {
+.note-card::before {
   content: '';
   position: absolute;
   top: 0.25rem;
@@ -60,12 +60,12 @@ const formattedDate = computed(() =>
   border-radius: 2px;
 }
 
-.post-card:hover::before {
+.note-card:hover::before {
   opacity: 1;
   transform: scaleY(1);
 }
 
-.post-card-date {
+.note-card-date {
   display: block;
   font-size: 0.875rem;
   color: var(--color-text-secondary);
@@ -73,7 +73,7 @@ const formattedDate = computed(() =>
   line-height: 1.7;
 }
 
-.post-card-title {
+.note-card-title {
   font-family: var(--font-heading, 'Newsreader', serif);
   font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
   font-weight: 500;
@@ -83,12 +83,12 @@ const formattedDate = computed(() =>
   text-wrap: balance;
 }
 
-.post-card-link {
+.note-card-link {
   color: var(--color-text);
   text-decoration: none;
 }
 
-.post-card-link::after {
+.note-card-link::after {
   content: '';
   position: absolute;
   top: 0;
@@ -98,7 +98,7 @@ const formattedDate = computed(() =>
   z-index: 1;
 }
 
-.post-card-subtitle {
+.note-card-subtitle {
   color: var(--color-text-secondary);
   font-size: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
   line-height: 1.7;

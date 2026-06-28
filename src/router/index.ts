@@ -9,20 +9,20 @@ export const routes: RouteRecordRaw[] = [
   },
   {
     path: '/about',
-    redirect: '/posts/about',
+    redirect: '/notes/about',
   },
   {
     path: '/career',
-    redirect: '/posts/career',
+    redirect: '/notes/career',
   },
   {
-    path: '/posts',
-    name: 'posts',
+    path: '/notes',
+    name: 'notes',
     component: () => import('@/views/ArchiveView.vue'),
   },
   {
-    path: '/posts/:slug',
-    name: 'post',
-    component: () => import('@/views/PostView.vue'),
+    path: '/notes/:slug',
+    name: 'note',
+    component: () => import('@/views/NoteView.vue'),
   },
 ]

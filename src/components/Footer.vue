@@ -7,7 +7,7 @@ import { RouterLink } from 'vue-router'
   <footer role="contentinfo" class="site-footer">
     <div class="footer-inner">
       <p class="footer-text">
-        <RouterLink to="/posts/about" class="footer-link">About</RouterLink>
+        <RouterLink to="/notes/about" class="footer-link">About</RouterLink>
         <span class="divider">&middot;</span>
         <a href="https://github.com/beecorrea" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a>
         <span class="divider">&middot;</span>

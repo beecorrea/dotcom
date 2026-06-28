@@ -8,7 +8,7 @@ const route = useRoute()
 
 // Dynamic target: '/' goes to '/posts/about', other pages go to '/'
 const brandLinkTarget = computed(() => {
-  return route.path === '/' ? '/posts/about' : '/'
+  return route.path === '/' ? '/notes/about' : '/'
 })
 </script>
 

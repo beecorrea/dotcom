@@ -2,16 +2,16 @@
 import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useHead } from '@unhead/vue'
-import { usePosts } from '@/composables/usePosts'
+import { useNotes } from '@/composables/useNotes'
 import Navbar from '@/components/Navbar.vue'
-import PostCard from '@/components/PostCard.vue'
+import NoteCard from '@/components/NoteCard.vue'
 
 import { SITE_DESCRIPTION } from '@/constants'
 
-const { posts } = usePosts()
+const { notes } = useNotes()
 
-// Only show the 2 most recent posts on the homepage
-const recentPosts = computed(() => posts.value.slice(0, 2))
+// Only show the 2 most recent notes on the homepage
+const recentNotes = computed(() => notes.value.slice(0, 2))
 
 useHead({
   title: '@bianca',
@@ -34,23 +34,23 @@ useHead({
       </h1>
     </header>
 
-    <section aria-label="Blog posts">
-      <PostCard
-        v-for="post in recentPosts"
-        :key="post.meta.slug"
-        :title="post.meta.title"
-        :subtitle="post.meta.subtitle"
-        :published-at="post.meta.publishedAt"
-        :slug="post.meta.slug"
+    <section aria-label="Blog notes">
+      <NoteCard
+        v-for="note in recentNotes"
+        :key="note.meta.slug"
+        :title="note.meta.title"
+        :subtitle="note.meta.subtitle"
+        :published-at="note.meta.publishedAt"
+        :slug="note.meta.slug"
       />
 
-      <p v-if="posts.length === 0" class="empty-state">
-        No posts yet. Check back soon.
+      <p v-if="notes.length === 0" class="empty-state">
+        No notes yet. Check back soon.
       </p>
 
-      <div v-if="posts.length > 0" class="archive-link-container">
-        <RouterLink to="/posts" class="archive-link">
-          All posts &rarr;
+      <div v-if="notes.length > 0" class="archive-link-container">
+        <RouterLink to="/notes" class="archive-link">
+          All notes &rarr;
         </RouterLink>
       </div>
     </section>

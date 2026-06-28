@@ -50,18 +50,18 @@ export default defineConfig({
     script: 'async',
     formatting: 'minify',
     includedRoutes(paths) {
-      const postsDir = resolve(__dirname, 'content/posts')
+      const notesDir = resolve(__dirname, 'content/notes')
       try {
-        const files = readdirSync(postsDir)
-        const postRoutes = files
+        const files = readdirSync(notesDir)
+        const noteRoutes = files
           .filter(f => f.endsWith('.mdx'))
-          .map(f => `/posts/${f.replace(/\.mdx$/, '')}`)
+          .map(f => `/notes/${f.replace(/\.mdx$/, '')}`)
         
         return paths
-          .filter(p => p !== '/posts/:slug')
-          .concat(postRoutes)
+          .filter(p => p !== '/notes/:slug')
+          .concat(noteRoutes)
       } catch (e) {
-        console.error('Error rendering static posts:', e)
+        console.error('Error rendering static notes:', e)
         return paths
       }
     },

@@ -3,25 +3,25 @@ import { computed } from 'vue'
 import { useRoute, RouterLink } from 'vue-router'
 import { useHead } from '@unhead/vue'
 import { MDXProvider } from '@mdx-js/vue'
-import { usePosts } from '@/composables/usePosts'
+import { useNotes } from '@/composables/useNotes'
 import Navbar from '@/components/Navbar.vue'
-import PostHeader from '@/components/PostHeader.vue'
+import NoteHeader from '@/components/NoteHeader.vue'
 import mdxComponents from '@/components/mdx/MdxComponents'
 import { SITE_DESCRIPTION } from '@/constants'
 
 const route = useRoute()
-const { getPostBySlug } = usePosts()
+const { getNoteBySlug } = useNotes()
 
 const slug = computed(() => route.params.slug as string)
-const post = computed(() => getPostBySlug(slug.value))
+const note = computed(() => getNoteBySlug(slug.value))
 
 // Dynamically set head metadata
 useHead({
-  title: computed(() => (post.value ? `@bianca — ${post.value.meta.title}` : '@bianca — Post Not Found')),
+  title: computed(() => (note.value ? `@bianca — ${note.value.meta.title}` : '@bianca — Note Not Found')),
   meta: [
     {
       name: 'description',
-      content: computed(() => post.value?.meta.subtitle || `${SITE_DESCRIPTION} — Blog post on @bianca`),
+      content: computed(() => note.value?.meta.subtitle || `${SITE_DESCRIPTION} — Note on @bianca`),
     },
   ],
 })
@@ -31,24 +31,24 @@ useHead({
   <div class="reading-container">
     <Navbar />
 
-    <div v-if="post">
+    <div v-if="note">
       <article>
-        <PostHeader
-          :title="post.meta.title"
-          :subtitle="post.meta.subtitle"
-          :published-at="post.meta.publishedAt"
+        <NoteHeader
+          :title="note.meta.title"
+          :subtitle="note.meta.subtitle"
+          :published-at="note.meta.publishedAt"
         />
-        <div class="post-content">
+        <div class="note-content">
           <MDXProvider :components="mdxComponents">
-            <component :is="post.component" />
+            <component :is="note.component" />
           </MDXProvider>
         </div>
       </article>
     </div>
     
     <div v-else class="not-found">
-      <h1>Post Not Found</h1>
-      <p>The post you are looking for could not be found. It may have been moved or deleted.</p>
+      <h1>Note Not Found</h1>
+      <p>The note you are looking for could not be found. It may have been moved or deleted.</p>
       <RouterLink to="/" class="back-link">Return to Home</RouterLink>
     </div>
   </div>
@@ -82,12 +82,12 @@ useHead({
   color: var(--color-accent-hover);
 }
 
-/* Post-specific spacing/formatting adjustments */
-.post-content {
+/* Note-specific spacing/formatting adjustments */
+.note-content {
   margin-block-start: 1rem;
 }
 
-/* Custom styles for Tufte elements inside post-content if needed */
+/* Custom styles for Tufte elements inside note-content if needed */
 :deep(pre) {
   margin-block: 1.5rem;
   padding: 1rem;

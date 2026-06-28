@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { PostMeta } from '@/types'
+import type { NoteMeta } from '@/types'
 
 interface Props {
-  title: PostMeta['title']
-  subtitle: PostMeta['subtitle']
-  publishedAt: PostMeta['publishedAt']
+  title: NoteMeta['title']
+  subtitle: NoteMeta['subtitle']
+  publishedAt: NoteMeta['publishedAt']
 }
 
 const props = defineProps<Props>()
@@ -21,24 +21,24 @@ const formattedDate = computed(() =>
 </script>
 
 <template>
-  <header class="post-header">
-    <h1 class="post-header-title">{{ title }}</h1>
-    <p class="post-header-subtitle">{{ subtitle }}</p>
+  <header class="note-header">
+    <h1 class="note-header-title">{{ title }}</h1>
+    <p class="note-header-subtitle">{{ subtitle }}</p>
 
-    <time :datetime="publishedAt" class="post-header-date">
+    <time :datetime="publishedAt" class="note-header-date">
       {{ formattedDate }}
     </time>
 
-    <hr class="post-header-divider" />
+    <hr class="note-header-divider" />
   </header>
 </template>
 
 <style scoped>
-.post-header {
+.note-header {
   margin-block-end: 2.5rem;
 }
 
-.post-header-title {
+.note-header-title {
   font-family: var(--font-heading, 'Newsreader', serif);
   font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
   font-weight: 600;
@@ -49,7 +49,7 @@ const formattedDate = computed(() =>
   text-wrap: balance;
 }
 
-.post-header-subtitle {
+.note-header-subtitle {
   font-size: clamp(1.0625rem, 0.75rem + 0.8vw, 1.25rem);
   color: var(--color-text-secondary);
   line-height: 1.6;
@@ -58,7 +58,7 @@ const formattedDate = computed(() =>
   text-wrap: pretty;
 }
 
-.post-header-date {
+.note-header-date {
   display: block;
   font-size: 0.875rem;
   color: var(--color-text-secondary);
@@ -66,7 +66,7 @@ const formattedDate = computed(() =>
   margin-block-end: 1.5rem;
 }
 
-.post-header-divider {
+.note-header-divider {
   border: none;
   border-block-start: 1px solid var(--color-gold);
   margin: 0;
