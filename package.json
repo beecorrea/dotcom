@@ -7,8 +7,9 @@
     "dev": "vite",
     "build": "vite-ssg build",
     "type-check": "vue-tsc --noEmit",
-    "preview": "vite preview",
-    "create-note": "node scripts/create-note.js"
+    "preview": "yarn run build && wrangler dev",
+    "create-note": "node scripts/create-note.js",
+    "deploy": "yarn run build && wrangler deploy"
   },
   "dependencies": {
     "@unhead/vue": "^2.1.2",
@@ -18,6 +19,7 @@
     "vue-router": "4"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.42.3",
     "@mdx-js/rollup": "^3.1.1",
     "@mdx-js/vue": "^3.1.1",
     "@shikijs/rehype": "^4.3.0",
@@ -34,6 +36,7 @@
     "typescript": "~6.0.2",
     "vite": "^8.1.0",
     "vite-ssg": "^28.3.0",
-    "vue-tsc": "^3.3.5"
+    "vue-tsc": "^3.3.5",
+    "wrangler": "^4.105.0"
   }
 }
