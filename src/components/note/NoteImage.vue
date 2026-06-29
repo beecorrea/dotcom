@@ -21,7 +21,6 @@ defineProps<Props>();
   flex-direction: column;
   align-items: center;
   margin-block: 2.5rem;
-  width: 100%;
 }
 
 .note-image {
