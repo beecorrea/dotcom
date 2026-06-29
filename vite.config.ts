@@ -9,43 +9,42 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import { resolve } from 'node:path'
 import { readdirSync } from 'node:fs'
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
     },
   },
-  plugins: [
-    mdx({
-      jsxImportSource: 'vue',
-      providerImportSource: '@mdx-js/vue',
-      remarkPlugins: [
-        remarkFrontmatter,
-        [remarkMdxFrontmatter, { name: 'frontmatter' }],
-      ],
-      rehypePlugins: [
-        rehypeSlug,
-        [rehypeAutolinkHeadings, {
-          behavior: 'append',
-          properties: {
-            ariaLabel: 'Link to this section',
-            className: ['heading-anchor'],
-          },
-          content: {
-            type: 'text',
-            value: '#',
-          },
-        }],
-        [rehypeShiki, {
-          themes: {
-            light: 'rose-pine-dawn',
-            dark: 'rose-pine-moon',
-          },
-        }],
-      ],
-    }),
-    vue(),
-  ],
+  plugins: [mdx({
+    jsxImportSource: 'vue',
+    providerImportSource: '@mdx-js/vue',
+    remarkPlugins: [
+      remarkFrontmatter,
+      [remarkMdxFrontmatter, { name: 'frontmatter' }],
+    ],
+    rehypePlugins: [
+      rehypeSlug,
+      [rehypeAutolinkHeadings, {
+        behavior: 'append',
+        properties: {
+          ariaLabel: 'Link to this section',
+          className: ['heading-anchor'],
+        },
+        content: {
+          type: 'text',
+          value: '#',
+        },
+      }],
+      [rehypeShiki, {
+        themes: {
+          light: 'rose-pine-dawn',
+          dark: 'rose-pine-moon',
+        },
+      }],
+    ],
+  }), vue(), cloudflare()],
   ssgOptions: {
     script: 'async',
     formatting: 'minify',
