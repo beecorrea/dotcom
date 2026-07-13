@@ -64,7 +64,7 @@
     --color-handle-text: light-dark(#9C525E, #E8A0BF);
 
     /* Typography tokens */
-    --font-body: 'Domine', Georgia, serif;
+    --font-body: '-apple-system', helvetica, helvetica neue;
     --font-heading: 'Merriweather, Merriweather Fallback', Georgia, serif;
     --font-ui: 'Inter', sans-serif;
   }
