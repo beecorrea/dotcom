@@ -2,6 +2,23 @@
 title: "Infrastructure Experiments"
 subtitle: "Managing changes to enterprise infrastructure without breaking it."
 publishedAt: "2026-06-28"
+hide: true
 ---
 
 <NoteQuote>WIP</NoteQuote>
+
+One of the problems you usually have when working with mission critical software is making changes to its infrastructure without crashing tenants — microservices, daemons and integrations you don't even know are there. SREs tend to despise such changes, as they're usually done off working hours or require temporary service interruption. That comes from an incomplete understanding of what failure is, and what it means for infrastructure.
+
+Imagine that you own a web server that hosts hundreds of applications running inside Linux containers and you need to do a task that requires service interruption (e.g. OS upgrade, AMI migration). Given that the applications were designed to run 24x7, how do you maximize the availability of the applications? Disregard external dependencies and storage constraints.
+
+From an infra PoV, most people are going to ignore the application altogether or mistakingly equate "applications" with "Linux containers". But when you think about it, applications are the reason Linux containers were created. If applications are the cogs that make a company function, infrastructure is what actually powers these applications and make them come to life.
+
+{/* Drawing with applications running the business and infrastructure running the applications */}
+
+Since infrastructure has such importance in the lifecycle of a company, changing it is a risky task, whether you're running it on promise or through the cloud. As Cloudflare itself says, failure is a given: your infrastructure will eventually crash. You mustn't ask yourself how to avoid crashing it, but how to make the most of each crash. 
+
+The first step in the change process is partitioning your tenants (bulkhead pattern) and defining the change topology:
+
+{/* drawing with a DAG of tenants */}
+
+Then, individually apply each change to a node and evaluate if the change was properly applied.
