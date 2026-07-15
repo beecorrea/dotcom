@@ -3,6 +3,8 @@ import vue from '@vitejs/plugin-vue'
 import mdx from '@mdx-js/rollup'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
 import rehypeShiki from '@shikijs/rehype'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
@@ -22,6 +24,7 @@ export default defineConfig({
       remarkPlugins: [
         remarkFrontmatter,
         [remarkMdxFrontmatter, { name: 'frontmatter' }],
+        remarkMath,
       ],
       rehypePlugins: [
         rehypeSlug,
@@ -42,6 +45,7 @@ export default defineConfig({
             dark: 'rose-pine-moon',
           },
         }],
+        rehypeKatex,
       ],
     }),
     vue(),

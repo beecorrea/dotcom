@@ -3,6 +3,7 @@ import App from './App.vue'
 import { routes } from './router'
 import './assets/globals.css'
 import './assets/tufte-overrides.css'
+import 'katex/dist/katex.min.css'
 
 export const createApp = ViteSSG(
   App,
