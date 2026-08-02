@@ -27,3 +27,18 @@ export interface TabsContext {
   activeTabId: Ref<string>
   registerTab: (id: string, label: string) => void
 }
+
+/** A single notebook page's metadata. */
+export interface NotebookPageData {
+  id: string
+  label: string
+}
+
+/** The Injection Context for child notebook pages to register and synchronize with parent notebook. */
+export interface NotebookContext {
+  activePageId: Ref<string>
+  registerPage: (id: string, label: string) => void
+  unregisterPage: (id: string) => void
+  pages: Ref<NotebookPageData[]>
+}
+
