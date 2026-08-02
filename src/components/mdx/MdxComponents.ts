@@ -1,5 +1,7 @@
 import { Tabs, Tab } from '@/components/tabs'
 import { NoteImage, NoteQuote } from '@/components/note'
+import { Notebook, NotebookPage } from '@/components/notebook'
+
 /**
  * MDX component overrides for the blog's MDXProvider.
  *
@@ -23,6 +25,10 @@ const mdxComponents = {
   Tab,
   NoteImage,
   NoteQuote,
+  Notebook,
+  NotebookPage,
+  Page: NotebookPage,
 } as const
+
 
 export default mdxComponents

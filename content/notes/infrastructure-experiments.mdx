@@ -1,30 +1,106 @@
 ---
 title: "Infrastructure Experiments"
-subtitle: "Managing changes to enterprise infrastructure without breaking it."
+subtitle: "Changing enterprise infrastructure without breaking it."
 publishedAt: "2026-06-28"
-hide: true
+hide: false
 ---
+<NoteQuote>I'm still working on these notes, there's still ~5 pages left to write. I'll finish them by the end of September 2026.</NoteQuote>
 
-<NoteQuote>WIP</NoteQuote>
+<Notebook>
+  <NotebookPage label="No Friday Deploys">
+    A very common problem you face when running infrastructure for mission-critical software is making changes to the infrastructure or platform **without crashing its clients** — those microservices, cron jobs and integrations that users don't even know are there but are responsible for making the investors happy. 
 
-# A Day in Site Reliability
-A very common problem you face when running infrastructure for mission-critical software is making changes to the infrastructure or platform without crashing its clients — microservices, cron jobs and integrations you don't even know are there.
+    Some time ago, a work colleague asked me how our team was deploying infrastructure without affecting our internal and external end-users. The short answer is that you just have to focus on [getting used to deploying to prod all the time](https://charity.wtf/p/friday-deploy-freezes-are-exactly-like-murdering-puppies). The long answer, however, requires that we discuss failure as a property of [chaotic systems](https://principlesofchaos.org). 
+    
+    Failure guarantees that, throughout the years and decades that system is in prod, it will eventually fail at least once. And the sooner you find out something's gonna fail, the sooner you can course correct and prevent the system from failing.
 
-To minimize service downtime, SREs tend to perform these changes during low demand periods like off working hours or during weekends (if the product allows it). Although this is how you usually go about it in the industry, this has a downside very similar to "[no friday deploys](https://charity.wtf/p/friday-deploy-freezes-are-exactly-like-murdering-puppies)":
-> "If you block devs from merging on Fridays, then you are sacrificing a fifth of your velocity and overall output. That's a lot of fucking output." —— Charity Majors
+    Think of the systems you work on at your company: what happens when they're down? How do you prevent them from crashing? How do you remediate service downtime? If you're working on a mission-critical system, thinking about these questions might give you anxiety as the consequences to failure are not light. 
+    
+    To minimize service downtime, SREs tend to perform these changes during low demand periods like off working hours or during weekends (if the product allows it) to avoid a high-severity incident (or worsen the current open incidents). However, this has a downside similar to "no friday deploys" policies:
+    > "If you block devs from merging on Fridays, then you are sacrificing a fifth of your velocity and overall output. That's a lot of fucking output." —— Charity Majors
 
-Let's exercise that a bit with an example scenario:
+    And they're right: you're sacrificing a lot of puppies because of a lack of reliability in your system. Going beyond this means treating changes to infrastructure as experiments, learning from them and using that to do a better job next time.
+  </NotebookPage>
 
-> Imagine that you own a set of VMs and use them to run a system composed of microservices inside containers. Consider that 10% of the containers run a mission-critical process.  
-Let's say you need to do a maintenance task that requires downtime, such as doing an OS upgrade.  
-Given that the microservices were designed to run 24x5, how do you maximize the availability of the system?
+  <NotebookPage label="Site Reliability">
+    Reliability is at the core of [systems engineering](https://en.wikipedia.org/wiki/Systems_engineering) and distributed systems, which concerns both Software Engineers (SWE) and Site Reliability Engineers (SRE). For instance, consider the following problem:
 
-Unpredicted downtime is at the core of [systems engineering](https://en.wikipedia.org/wiki/Systems_engineering), which concerns both Software Engineers (SWE) and Site Reliability Engineers (SRE). When taking a chance at this problem, Software Engineers might broadly answer with "horizontal scaling". And that's the answer you'd expect a SWE to immediately think of during a system design session: it restricts itself to the application domain (["userland"](https://unix.stackexchange.com/questions/137820/whats-the-difference-of-the-userland-vs-the-kernel)) by addressing temporary downtime with redundancy.
+    You own a set of VMs and use them to run a system of distributed microservices, where **50% of VMs** run mission-critical services. Say you need to do a maintenance task that requires downtime, such as **upgrading the OS version of the VMs**.
+    Given that the microservices were designed to run 24x5, how do you **maximize the availability of the system**?
 
-SREs on the other hand are the ones responsible for ensuring there are enough machines to run the containers. They're naturally inclined to attempt an operational solution like splitting the set of VMs into two sets: one running the old OS version and another running the new OS version. Applications are iteratively migrated from the first group to the second group, and in case of error the migration can be halted or retried, resulting in minimal downtime. 
+    Most Software Engineers will prefer solving that problem with a mix of "horizontal scaling", "messaging queues" and "write-ahead logs". And that's the answer you'd expect a SWE to immediately think of during a system design session: they should rarely concern themselves with what happens outside of the application domain, but they should have a general notion of how it works and understand that it'll eventually fail, then design their systems based on these assumptions.
 
-This [greedy](https://en.wikipedia.org/wiki/Greedy_algorithm) solution is widely known as "blue-green deployment", which can be rephrased as: "Provision two sets of VMs, one running OS version 'OLD' and another running OS version 'NEW'. Assign each container to VMs from the first set; then once they're stable move them to VMs from the second set.If they fail to run, move them back to X."
+    SREs, on the other hand, tend to see an application as a black box and work to ensure the production environment is operational and healthy. To achieve this at scale requires heavy adoption of software engineering to automate the required operations, such as ensuring are enough machines to run the containers (like AWS Karpenter does). 
 
-{/* Turn this into an algorithm */}
+    Using software to automate this process is the main difference between System Administration and Site Reliability. Sysadmin requires that you spend your budget in toil, which has the common side-effect of create knowledge silos. Site Reliability will instead create distributed systems to [automate toil](https://sre.google/sre-book/eliminating-toil/) and ensure engineer hours are wisely spent.
 
-Notice the change in perspective: the first strategy is concerned with the deployment of applications first and infrastructure second, while the second one is concerned with infrastructure first and applications second. Also notice that both algorithms make use of partitioning as a principle of multi-tenancy.
+    Adopting SRE will put you in a better position to attempt an automated solution like a mix of "blue-green deployment" and "canary deployment". You upgrade a percentage of VMs and iteratively migrate applications from the old VMs to them. As you increase the reliability of the system and assert it's healthy, you increase the percentage of VMs and in case of error the migration can be halted, rolled back or retried.
+  </NotebookPage>
+
+  <NotebookPage label="Automating Infrastructure">
+    Migrating infrastructure without software is painful, as it requires manual management of shell scripts, permissions and system state along with undesired service downtime if you're not quick enough. Also, doing this manually isn't reproducible at all, so the second time you run this playbook it might not work as the system might have changed since the previous run.
+
+    In most cases, you can model the problem domain using data structures and write a [reproducible program](https://robsteranium.github.io/functional-reproducibility/) that automates the task at hand. Let's pretend Python classes are immutable for the purpose of demonstration:
+
+    ```python
+    # Upgrades the OS using custom logic or a third-party dependency like Ansible.
+    from lib.infra.vm import upgrade_os
+
+    class VirtualMachine:
+      def __init__(self, id: int, config: dict):
+        # The format of the ID is left up to the reader.
+        self.id = id
+
+        # Config has stuff like "OS version", "CPU cores", "instance type" etc.
+        self.config = config
+
+        # Some scheduling queues for applications. 
+        # Do not confuse applications with OS processes as one application might have multiple processes.
+        self.running_applications = []
+        self.idle_applications = []
+        self.finished_applications = []
+      
+      def clone(self) -> VirtualMachine:
+        return VirtualMachine(random.randint(1, 100), self.config)
+
+      def upgrade_os(self, new_version: str):
+        if not new_version:
+          raise Exception("new_version is required.")
+        
+        curr_version = self.config["version"]
+        if curr_version > new_version:
+          raise Exception("current version is newer than requested version.")
+
+        upgrade_os(new_version)
+        
+      def list_applications(self):
+        return self.running_applications + self.idle_applications + self.finished_applications
+
+    def migrate(vms: list[VirtualMachine]):
+      for old_vm in vms:
+        # 50% of VMs run mission-critical services.
+        pct = random.random()
+        if pc <= 0.5:
+          # Clone the VM config to a new VM and upgrade the OS
+          new_vm = old_vm.clone()
+          new_vm = old_vm.upgrade_os()
+
+          # Migrate the applications
+          for app in old_vm.list_applications():
+            ok = new_vm.schedule(app)
+            if not ok:
+              # Let's just log and halt on error for now (i.e. panic).
+              log("failed to schedule app {}".format(app.name))
+              os.exit(1)
+
+          # Delete the old VM once all apps are migrated.
+          # Use while loop as a dumb retry in case deletion is not ok.
+          deleted = old_vm.delete()
+          while not deleted:
+            deleted = old_vm.delete()
+    ```
+
+    The next step is converting this program into a mature capability that can be used as a service by application owners. This is a big step that will lead you to Platform Engineering, where Product meets Infrastructure.
+  </NotebookPage>
+
+</Notebook>

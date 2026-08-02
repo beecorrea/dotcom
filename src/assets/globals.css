@@ -83,8 +83,8 @@
     background-color: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-body);
-    font-size: clamp(1.125rem, 1.05rem + 0.25vw, 1.2rem);
-    line-height: 1.7;
+    font-size: 1.15rem;
+    line-height: 1.4;
     scrollbar-color: var(--color-accent) var(--color-bg-subtle);
   }
 
