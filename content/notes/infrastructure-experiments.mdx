@@ -84,8 +84,7 @@ hide: false
         # 50% of VMs run mission-critical services.
         pct = random.random()
         if pc <= 0.5:
-          # Clone the VM config to a new VM and upgrade the OS
-          
+          # Clone the VM and upgrade the OS
           new_vm = old_vm.upgrade_os()
 
           # Migrate the applications
