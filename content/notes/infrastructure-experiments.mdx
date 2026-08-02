@@ -40,7 +40,7 @@ hide: false
   <NotebookPage label="Automating Infrastructure">
     Changing infrastructure without software is painful, as it requires manual management of shell scripts, permissions and system state along with undesired service downtime if you're not quick enough. Also, doing this manually isn't reproducible at all, so the second time you run this playbook it might not work as the system might have changed since the previous run.
 
-    Site Reliability says that you must tackle this problem from a software engineering standpoint. You can model the problem domain using data structures and write a [reproducible program](https://robsteranium.github.io/functional-reproducibility/) that automates the task at hand. Let's pretend Python classes are immutable for the purpose of demonstration:
+    Site Reliability says that you must tackle this problem from a software engineering standpoint. You can model the problem domain using immutable data structures and write a [reproducible program](https://robsteranium.github.io/functional-reproducibility/) that automates the task at hand. Let's pretend Python classes are immutable for the purpose of demonstration:
 
     ```python
     # Upgrades the OS using custom logic or a third-party dependency like Ansible.
