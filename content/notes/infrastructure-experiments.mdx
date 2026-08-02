@@ -90,8 +90,8 @@ hide: false
             ok = new_vm.schedule(app)
             if not ok:
               # Let's just log and halt on error for now (i.e. panic).
-              log("failed to schedule app {}".format(app.name))
-              os.exit(1)
+              print(f"failed to schedule app {app.name}")
+              sys.exit(1)
 
           # Delete the old VM once all apps are migrated.
           # Use while loop as a dumb retry in case deletion is not ok.
