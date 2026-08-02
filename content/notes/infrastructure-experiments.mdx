@@ -38,7 +38,7 @@ hide: false
   </NotebookPage>
 
   <NotebookPage label="Automating Infrastructure">
-    Migrating infrastructure without software is painful, as it requires manual management of shell scripts, permissions and system state along with undesired service downtime if you're not quick enough. Also, doing this manually isn't reproducible at all, so the second time you run this playbook it might not work as the system might have changed since the previous run.
+    Changing infrastructure without software is painful, as it requires manual management of shell scripts, permissions and system state along with undesired service downtime if you're not quick enough. Also, doing this manually isn't reproducible at all, so the second time you run this playbook it might not work as the system might have changed since the previous run.
 
     Site Reliability says that you must tackle this problem from a software engineering standpoint. You can model the problem domain using data structures and write a [reproducible program](https://robsteranium.github.io/functional-reproducibility/) that automates the task at hand. Let's pretend Python classes are immutable for the purpose of demonstration:
 
@@ -99,9 +99,13 @@ hide: false
           while not deleted:
             deleted = old_vm.delete()
     ```
-    Testing this with mock values will evaluate if this program works in a controlled environment, where you can tune the variables of the system. But by experimenting with *real applications* you'll gain real data which you can use to evolve the script and improve reliability, usability, quality and other -ilities.
+    Testing this with mock values will evaluate if this program works in a controlled environment, where you can tune the variables of the system. But by experimenting with *real applications* you'll gain real data which you can use to evolve the script and improve reliability, usability, quality and other -ilities. 
+
+    The key insight here is recognizing that although all applications live in production, they aren't all made equal: some are mission critical while others are not. By using non-mission critical applications in experiments, you're able to learn faster about wrong assumptions while softening the consequences of failure: profit loss, compliance issues and whatnot.
     
-    The next step is converting this program into a mature capability that can be used as a service by application owners. This is a big step that will lead you to Platform Engineering: the modern intersection of Product, Reliability and Infrastructure.
+    The stance shifts from doing toil tasks to defining a process for OS upgrades, automating it and constantly experimenting towards improvement. As you fail a lot and become aware of the intricacies of the "production environment", upgrading operating systems becomes as simple as running a script or clicking a button on a web page, even on mission critical applications.
+
+    The next step is converting this program into a mature service that can be used by application owners. This is a big step that will lead you to Platform Engineering: the modern intersection of Product, Reliability and Infrastructure.
   </NotebookPage>
 
 </Notebook>
