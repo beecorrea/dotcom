@@ -63,15 +63,18 @@ hide: false
       def clone(self) -> VirtualMachine:
         return VirtualMachine(random.randint(1, 100), self.config)
 
-      def upgrade_os(self, new_version: str):
+      def upgrade_os(self, new_version: str) -> VirtualMachine:
+        new_vm = self.clone()
+
         if not new_version:
           raise Exception("new_version is required.")
         
-        curr_version = self.config["os"]["version"]
+        curr_version = new_vm.config["os"]["version"]
         if curr_version > new_version:
           raise Exception("current version is newer than requested version.")
 
-        upgrade_os(new_version)
+        upgrade_os(new_vm, new_version)
+        return new_vm
         
       def list_applications(self):
         return self.running_applications + self.idle_applications + self.finished_applications
@@ -82,7 +85,7 @@ hide: false
         pct = random.random()
         if pc <= 0.5:
           # Clone the VM config to a new VM and upgrade the OS
-          new_vm = old_vm.clone()
+          
           new_vm = old_vm.upgrade_os()
 
           # Migrate the applications
