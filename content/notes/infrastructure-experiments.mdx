@@ -79,7 +79,7 @@ hide: false
       def list_applications(self):
         return self.running_applications + self.idle_applications + self.finished_applications
 
-    def migrate(vms: list[VirtualMachine]):
+    def run_experiment(vms: list[VirtualMachine]):
       for old_vm in vms:
         # 50% of VMs run mission-critical services.
         pct = random.random()
