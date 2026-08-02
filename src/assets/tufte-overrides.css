@@ -205,4 +205,34 @@
     font-family: var(--font-heading);
     font-weight: 600;
   }
+
+  /* -- KaTeX / Math overrides --------------------------------------------- */
+  /* Prevent math block equations from breaking layout/overflowing on mobile */
+  .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-block: 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-accent) var(--color-bg-subtle);
+  }
+
+  /* Ensure inline math doesn't cause vertical alignment issues or line wrapping weirdness */
+  .katex {
+    text-wrap: nowrap;
+    font-size: 1.05em;
+  }
+
+  /* Support styling for horizontal scrollbars of block equations */
+  .katex-display::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .katex-display::-webkit-scrollbar-thumb {
+    background-color: var(--color-accent);
+    border-radius: 2px;
+  }
+
+  .katex-display::-webkit-scrollbar-track {
+    background-color: var(--color-bg-subtle);
+  }
 }

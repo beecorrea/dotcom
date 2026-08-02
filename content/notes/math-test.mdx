@@ -1,0 +1,45 @@
+---
+title: "LaTeX Support Test"
+subtitle: "Verifying LaTeX and mathematical rendering."
+publishedAt: "2026-07-15"
+hide: true
+---
+
+This page serves as a test to verify that LaTeX support is properly integrated and styled for our notes. It showcases both inline and block equations.
+
+## Inline Equations
+
+We can now render inline math expressions. For example, Einstein's mass-energy equivalence is represented by $E = mc^2$, and the uncertainty principle is written as $\Delta x \cdot \Delta p \ge \frac{\hbar}{2}$. These equations compile seamlessly within the paragraph flow.
+
+## Block Equations
+
+For more complex mathematical derivations, block equations are centered and isolated:
+
+$$
+f(x) = \int_{-\infty}^\infty \hat{f}(\xi)\,e^{2 \pi i \xi x}\,\mathrm{d}\xi
+$$
+
+Here is the definition of a limit in calculus:
+
+$$
+\lim_{x \to c} f(x) = L
+$$
+
+And the famous Euler's identity:
+
+$$
+e^{i\pi} + 1 = 0
+$$
+
+## Wide Equations and Mobile Responsiveness
+
+To ensure wide equations don't break our layout on mobile viewports, block equations support horizontal scrolling. Let's verify with an exceptionally wide matrix equation:
+
+$$
+A = \begin{pmatrix}
+a_{11} & a_{12} & a_{13} & a_{14} & a_{15} & a_{16} \\
+a_{21} & a_{22} & a_{23} & a_{24} & a_{25} & a_{26} \\
+a_{31} & a_{32} & a_{33} & a_{34} & a_{35} & a_{36} \\
+a_{41} & a_{42} & a_{43} & a_{44} & a_{45} & a_{46}
+\end{pmatrix}
+$$

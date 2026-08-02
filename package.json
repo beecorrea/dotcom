@@ -7,17 +7,20 @@
     "dev": "vite",
     "build": "vite-ssg build",
     "type-check": "vue-tsc --noEmit",
-    "preview": "vite preview",
-    "create-note": "node scripts/create-note.js"
+    "preview": "yarn run build && wrangler dev",
+    "create-note": "node scripts/create-note.js",
+    "deploy": "yarn run build && wrangler deploy"
   },
   "dependencies": {
     "@unhead/vue": "^2.1.2",
     "gray-matter": "^4.0.3",
+    "katex": "^0.17.0",
     "rollup": "^4.62.2",
     "vue": "^3.5.38",
     "vue-router": "4"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.45.0",
     "@mdx-js/rollup": "^3.1.1",
     "@mdx-js/vue": "^3.1.1",
     "@shikijs/rehype": "^4.3.0",
@@ -26,14 +29,17 @@
     "@vitejs/plugin-vue": "^6.0.7",
     "@vue/tsconfig": "^0.9.1",
     "rehype-autolink-headings": "^7.1.0",
+    "rehype-katex": "^7.0.1",
     "rehype-slug": "^6.0.0",
     "remark-frontmatter": "^5.0.0",
+    "remark-math": "^6.0.0",
     "remark-mdx-frontmatter": "^5.2.0",
     "shiki": "^4.3.0",
     "tufte-css": "^1.9.0",
     "typescript": "~6.0.2",
     "vite": "^8.1.0",
     "vite-ssg": "^28.3.0",
-    "vue-tsc": "^3.3.5"
+    "vue-tsc": "^3.3.5",
+    "wrangler": "^4.111.0"
   }
 }
